@@ -1,0 +1,34 @@
+[
+      {
+            "brandId": "83ff2517-0135-4874-af72-a242921a8ace",
+            "phoneId": "c93a4cc8-9461-4c6c-bde4-d52c24cd0b3f",
+            "name": "Iphone 13 Pro Max",
+            "description": "Iphone 13 Pro Max - 248gb",
+            "price": 6400,
+            "picture": "https://empirecelular.co.il/wp-content/uploads/2021/10/LD0005886472_1.jpg"
+      },
+      {
+            "brandId": "383ff5b8-7bce-4bef-b9c1-755975d3d8f5",
+            "phoneId": "3c5b7f35-c3c5-42ed-96aa-d98636704b1f",
+            "name": "Samsung Galaxy S21 Ultra",
+            "description": "Samsung Galaxy S21 Ultra - 256gb",
+            "price": 5200,
+            "picture": "https://coolstuf.com.pg/wp-content/uploads/2021/06/ULTRA-main.jpg"
+      },
+      {
+            "brandId": "8251bd37-b057-46c1-93ac-918fc31207ba",
+            "phoneId": "bc261ef1-e8e0-4ee8-a56d-9b040183f764",
+            "name": "Huawei p50 pro",
+            "description": "Huawei p50 pro - 8 GB Ram 256 gb",
+            "price": 4900,
+            "picture": "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/p50-pro/images/design/weight-phone.webp"
+      },
+      {
+            "brandId": "2f786050-1430-4479-9884-14392ffe0907",
+            "phoneId": "316b3f9d-7019-497d-856d-7eed2bd8cb2a",
+            "name": "Xiaomi 12 Pro",
+            "description": "Xiaomi 12 Pro - 128gb",
+            "price": 3700,
+            "picture": "http://villaguest.shop/wp-content/uploads/2022/04/10652c91701231386a4ebd019acb8fe5.jpg"
+      }
+]

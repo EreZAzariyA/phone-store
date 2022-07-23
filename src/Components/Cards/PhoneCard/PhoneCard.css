@@ -1,0 +1,26 @@
+.PhoneCard {
+      display: inline-block;
+}
+
+.PhoneCard .card {
+      width: 18rem;
+      margin: 5px;
+}
+
+.PhoneCard .card img {
+      height: 250px;
+      width: 100%;
+}
+
+.PhoneCard .card img:hover {
+      padding: 10px;
+}
+
+.PhoneCard .carousel-control-prev,
+.PhoneCard .carousel-control-next {
+      background-color: black;
+      height: fit-content;
+      width: auto;
+      margin: auto;
+}
+

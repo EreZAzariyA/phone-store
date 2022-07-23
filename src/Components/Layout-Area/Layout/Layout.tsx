@@ -1,36 +1,57 @@
+import Sidenav from "../Sidenav/Sidenav";
 import "./Layout.css";
+import { FiShoppingCart } from "react-icons/fi";
+import { useEffect } from "react";
+import phonesServices from "../../../Services/PhoneServices";
+import Routing from "../Routing/Routing";
 
 function Layout(): JSX.Element {
+
+    // useEffect(() => {
+    //     const phones = phonesServices.getAllPhones();
+    //     console.log(phones);
+
+    // }, [])
     return (
         <div className="Layout">
-            <a className="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                Link with href
-            </a>
-            <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                Button with data-bs-target
-            </button>
-
-            <div className="offcanvas offcanvas-start" tabIndex={-1} id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div className="offcanvas-body">
-                    <div>
-                        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-                    </div>
-                    <div className="dropdown mt-3">
-                        <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            Dropdown button
+            <header>
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div className="container-fluid">
+                        <button className="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                            <FiShoppingCart />
                         </button>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="#">Action</a></li>
-                            <li><a className="dropdown-item" href="#">Another action</a></li>
-                            <li><a className="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div className="navbar-nav">
+                                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                <a className="nav-link" href="#">Features</a>
+                                <a className="nav-link" href="#">Pricing</a>
+                                <a className="nav-link disabled">Disabled</a>
+                            </div>
+                        </div>
                     </div>
+                </nav>
+
+
+                <div className="offcanvas offcanvas-start" tabIndex={-1} id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <Sidenav />
                 </div>
-            </div>
+            </header>
+
+
+
+            <main>
+                <Routing />
+            </main>
+
+
+
+            <footer>
+                <p>ErezAzariya</p>
+            </footer>
+
         </div>
     );
 }
