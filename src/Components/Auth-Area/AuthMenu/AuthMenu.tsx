@@ -19,12 +19,19 @@ function AuthMenu(): JSX.Element {
                 <>
                     <span>Hello Guest</span>
                     <br />
-                    <NavLink to="/auth/login">Login</NavLink>
-                    <span>|</span>
-                    <NavLink to="/auth/register">register</NavLink>
+                        <div className="btn-group">
+
+                            <NavLink to="/auth/login">
+                                <button className="btn btn-dark">Login</button>
+                            </NavLink>
+
+                            <NavLink to="/auth/register">
+                                <button className="btn btn-dark">register</button>
+                            </NavLink>
+                        </div>
                 </>
             }
-            {user && 
+            {user &&
                 <>
                     <span>Hello {user.firstName + " " + user.lastName}</span><br />
                     <NavLink to="/logout">Logout</NavLink>

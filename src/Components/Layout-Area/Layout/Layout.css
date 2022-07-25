@@ -25,7 +25,7 @@
 }
 
 @media only screen and (max-width: 992px) {
-	.Layout .AuthMenu {
+	.Layout .d-flex .AuthMenu {
 		display: none;
 	}
 
@@ -39,4 +39,10 @@
 	.Layout .avatar {
 		display: none;
 	}
+
+	.Layout .dropdown-menu .AuthMenu {
+		display: contents;
+	}
+
+
 }

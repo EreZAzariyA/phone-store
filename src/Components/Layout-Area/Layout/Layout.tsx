@@ -1,11 +1,10 @@
 import Sidenav from "../Sidenav/Sidenav";
 import "./Layout.css";
 import { FiShoppingCart } from "react-icons/fi";
-import { useEffect } from "react";
-import phonesServices from "../../../Services/PhoneServices";
 import Routing from "../Routing/Routing";
 import AuthMenu from "Components/Auth-Area/AuthMenu/AuthMenu";
 import { NavLink } from "react-router-dom";
+import avatar from "../../../Assets/PNGs/avatar.png";
 
 function Layout(): JSX.Element {
 
@@ -38,9 +37,13 @@ function Layout(): JSX.Element {
                         <AuthMenu />
                     </div>
                     <div className="avatar dropdown">
-                        <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown link
+                        <a className=" btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            <img src={avatar} alt="" />
                         </a>
+
+                        <ul className="dropdown-menu dropdown-menu-dark">
+                            <AuthMenu />
+                        </ul>
                     </div>
                 </nav>
 

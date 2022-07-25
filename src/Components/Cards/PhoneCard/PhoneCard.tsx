@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import CartItemDetailsModel from "Models/Cart-Item-Details-Model";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { addItemToCartAction } from "Redux/Cart-State";
 import { cartStore } from "Redux/Store";
 import { PhoneModel } from "../../../Models/Phone-Model";
@@ -11,38 +12,86 @@ interface PhoneCardProps {
 function PhoneCard(props: PhoneCardProps): JSX.Element {
 
 
-    const [stock, setStock] = useState<number>(0);
-
-    function addToCart() {
-        cartStore.dispatch(addItemToCartAction(props.phone));
-    }
+    const [stock, setStock] = useState<number>(1);
+    const [itemInCart, setItemInCart] = useState<CartItemDetailsModel>();
 
     useEffect(() => {
-        const itemsInCart = cartStore.getState().itemsInCart;
-        // const itemInCart = itemsInCart?.find(i => i.phoneId === i.phoneId);
-        // if (itemInCart) {
-        //     const addToCartButton = document.getElementById("addToCartBtn" + props.phone.phoneId);
-        //     addToCartButton.textContent = "sdfsdf"
 
+
+        const itemsInCart = cartStore.getState().itemsInCart;
+
+        const itemInCart = itemsInCart?.find(i => i.phoneId === props.phone.phoneId);
+        setItemInCart(itemInCart)
+
+        if (itemInCart) {
+            setStock(itemInCart.stock);
+            const addToCartBtn = document.getElementById("addToCartBtn" + props.phone.phoneId);
+            (addToCartBtn as HTMLInputElement).value = "in-cart";
+            (addToCartBtn as HTMLInputElement).innerHTML = "In-Cart ✅";
+            addToCartBtn.classList.add("btn-success");
+
+        } else {
+            setStock(1)
+        }
+
+        // if (itemInCart) {
 
         // }
 
+        const unsubscribe = cartStore.subscribe(() => {
+            const itemsInCart = cartStore.getState().itemsInCart;
 
+            if (itemsInCart?.find(i => i.phoneId === props.phone.phoneId)) {
+
+                const addToCartBtn = document.getElementById("addToCartBtn" + props.phone.phoneId);
+                (addToCartBtn as HTMLInputElement).value = "in-cart";
+                (addToCartBtn as HTMLInputElement).innerHTML = "In-Cart ✅";
+                addToCartBtn.classList.add("btn-success")
+
+
+
+            }
+
+        })
+
+        return () => unsubscribe();
 
     }, []);
 
+    function numberWithCommas(x: number) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     function plus() {
-        setStock(stock + 1);
-        
+        setStock(stock + 1)
+
     }
+
     function minus() {
-        if (stock === 0) {
+        if (stock === 1) {
             return;
         }
         setStock(stock - 1);
     }
 
+    function addToCartBtn(e: SyntheticEvent) {
+        const value = (e.target as HTMLInputElement).value;
+
+        console.log(value);
+
+    }
+
+    function saveChanges() {
+        const newPhone = new CartItemDetailsModel();
+        newPhone.brandId = props.phone.brandId;
+        newPhone.description = props.phone.description;
+        newPhone.name = props.phone.name;
+        newPhone.phoneId = props.phone.phoneId;
+        newPhone.picture = props.phone.picture;
+        newPhone.price = props.phone.price;
+        newPhone.stock = stock;
+        cartStore.dispatch(addItemToCartAction(newPhone));
+    }
 
     return (
         <div className="PhoneCard">
@@ -71,12 +120,12 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
 
                 <div className="card-body">
                     <h5 className="card-title">{props.phone?.name}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">{props.phone?.price} ₪</h6>
+                    <h6 className="card-subtitle mb-2 text-muted">{numberWithCommas(props.phone.price)} ₪</h6>
                     <p className="card-text">{props.phone?.description}
                     </p>
 
 
-                    <button type="button" className="btn btn-outline-success" data-bs-toggle="modal" data-bs-target={"#exampleModal" + props.phone.phoneId}>
+                    <button type="button" id={"addToCartBtn" + props.phone.phoneId} className="btn btn-secondary" data-bs-toggle="modal" onClick={addToCartBtn} value={"not-in-cart"} data-bs-target={"#exampleModal" + props.phone.phoneId}>
                         Add to cart
                     </button>
 
@@ -84,27 +133,51 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">{props.phone.name}</h5>
+                                    <h5 className="modal-title" id="exampleModalLabel">Set stock to order</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
-                                    <p> Set stock to order</p> <br />
-                                    <div className="stockToOrder">
-                                        <button className="btn" onClick={plus}>+</button>
-                                        <p className="stock">{stock}</p>
-                                        <button className="btn" onClick={minus}>-</button>
+                                    <h3 className="phoneName">
+                                        {props.phone.name}
+                                    </h3>
+                                    <div>
+                                        <div className="row">
+                                            <div className="col-6">
+                                                <img src={props.phone.picture} alt="" />
+                                            </div>
+                                            <div className="col-6">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis amet quas eum illo et odit minima veniam, sapiente ab vitae blanditiis velit nisi repellendus accusamus sit totam sed sint molestiae!
+                                            </div>
+
+                                            <div className="row">
+                                                <div className="col-6">
+                                                    {numberWithCommas(props.phone.price * stock)} ₪
+                                                </div>
+                                                <div className="col-6">
+
+                                                    <div className="stockToOrder col-12">
+                                                        <button className="btn" onClick={plus}>+</button>
+                                                        <p className="stock">{ stock}</p>
+                                                        <button className="btn" onClick={minus}>-</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary">Save changes</button>
+
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={saveChanges}>Save changes</button>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

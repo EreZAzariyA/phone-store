@@ -13,6 +13,7 @@ body,
 
 #bg-image {
   position: fixed;
+  height: 100%;
   z-index: -1;
   /* The image used */
   background-image: url("/src/Assets/background.jpg");
