@@ -1,3 +1,4 @@
+import Loading from "Components/Layout-Area/Loading/Loading";
 import { BrandModel } from "Models/Brand-Model";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { PhoneModel } from "../../../Models/Phone-Model";
@@ -81,6 +82,9 @@ function HomePage(): JSX.Element {
 
                 <div className="row">
                     <div className="list">
+
+                        {phones === undefined && <Loading />}
+
                         {phones?.map(p => <PhoneCard key={p.phoneId} phone={p} />)}
                     </div>
                 </div>

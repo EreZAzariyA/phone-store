@@ -19,6 +19,9 @@ class PhoneServices {
             return phones;
       }
 
+      public async addToCart(phone: PhoneModel): Promise<void>{
+            
+      }
 
 
 }

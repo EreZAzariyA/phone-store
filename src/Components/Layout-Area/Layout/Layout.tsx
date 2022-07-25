@@ -4,6 +4,8 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useEffect } from "react";
 import phonesServices from "../../../Services/PhoneServices";
 import Routing from "../Routing/Routing";
+import AuthMenu from "Components/Auth-Area/AuthMenu/AuthMenu";
+import { NavLink } from "react-router-dom";
 
 function Layout(): JSX.Element {
 
@@ -25,12 +27,20 @@ function Layout(): JSX.Element {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div className="navbar-nav">
-                                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                <NavLink to={"/"} className="nav-link active" aria-current="page">Home</NavLink>
                                 <a className="nav-link" href="#">Features</a>
                                 <a className="nav-link" href="#">Pricing</a>
                                 <a className="nav-link disabled">Disabled</a>
                             </div>
                         </div>
+                    </div>
+                    <div className="d-flex">
+                        <AuthMenu />
+                    </div>
+                    <div className="avatar dropdown">
+                        <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown link
+                        </a>
                     </div>
                 </nav>
 

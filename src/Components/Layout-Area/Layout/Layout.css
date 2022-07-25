@@ -19,3 +19,24 @@
 	height: 100%;
 	margin: 5px;
 }
+
+.Layout .avatar {
+	color: white;
+}
+
+@media only screen and (max-width: 992px) {
+	.Layout .AuthMenu {
+		display: none;
+	}
+
+	.Layout .avatar {
+		margin: auto;
+		margin-top: -2rem;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.Layout .avatar {
+		display: none;
+	}
+}

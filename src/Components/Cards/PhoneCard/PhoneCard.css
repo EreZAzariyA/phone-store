@@ -24,3 +24,12 @@
       margin: auto;
 }
 
+.PhoneCard .stockToOrder {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+}
+
+.PhoneCard .stock {
+      font-size: xx-large;
+}
