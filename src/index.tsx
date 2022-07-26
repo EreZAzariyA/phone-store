@@ -9,6 +9,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+
   <React.StrictMode>
     <BrowserRouter>
       <div id="bg-image"></div>
@@ -16,6 +17,10 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+export function numberWithCommas(x: number) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

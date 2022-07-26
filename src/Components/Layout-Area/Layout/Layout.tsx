@@ -41,7 +41,7 @@ function Layout(): JSX.Element {
                             <img src={avatar} alt="" />
                         </a>
 
-                        <ul className="dropdown-menu dropdown-menu-dark">
+                        <ul className="dropdown-menu auth-dropdown dropdown-menu-dark">
                             <AuthMenu />
                         </ul>
                     </div>

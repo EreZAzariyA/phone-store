@@ -31,7 +31,7 @@
 
 	.Layout .avatar {
 		margin: auto;
-		margin-top: -2rem;
+		margin-top: -2.5rem;
 	}
 }
 
@@ -42,7 +42,15 @@
 
 	.Layout .dropdown-menu .AuthMenu {
 		display: contents;
+		padding: 10px;
+		margin: 20px;
 	}
 
+
+
+}
+
+.Layout .auth-dropdown {
+	padding: 20px;
 
 }

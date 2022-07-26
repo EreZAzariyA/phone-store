@@ -41,12 +41,13 @@ export function CartReducer(currentCartState: CartState = new CartState(), actio
                   break;
 
             case CartActionType.AddItemIntoCart:
-                  if (newCartState.itemsInCart.find(i => i.phoneId === action.payload.phoneId)) {
-                        const newList = newCartState.itemsInCart.filter(i => i.phoneId === action.payload.phoneId);
+                  if (newCartState.itemsInCart?.find(i => i.phoneId === action.payload.phoneId)) {
+                        const newList = newCartState.itemsInCart.filter(i => i.phoneId !== action.payload.phoneId);
 
                         newList.push(action.payload);
-                        localStorage.setItem("itemsInCart", JSON.stringify(newList));
                         newCartState.itemsInCart = newList;
+                        localStorage.setItem("itemsInCart", JSON.stringify(newCartState.itemsInCart));
+                        break;
                   }
                   newCartState.itemsInCart.push(action.payload);
                   localStorage.setItem("itemsInCart", JSON.stringify(newCartState.itemsInCart));

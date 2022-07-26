@@ -1,3 +1,17 @@
 .Sidenav {
-	
+	height: 100%;
 }
+
+.Sidenav .offcanvas-title {
+	text-decoration: underline;
+}
+
+
+.Sidenav .InCartCard {
+	border-bottom: 1px solid black;
+}
+
+.Sidenav .InCartCard:last-child {
+	border: none;
+}
+

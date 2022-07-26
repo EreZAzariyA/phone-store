@@ -1,5 +1,6 @@
+import InCartCard from "Components/Cards/InCartCard/InCartCard";
+import { numberWithCommas } from "index";
 import CartItemDetailsModel from "Models/Cart-Item-Details-Model";
-import { PhoneModel } from "Models/Phone-Model";
 import { useEffect, useState } from "react";
 import { cartStore } from "Redux/Store";
 import "./Sidenav.css";
@@ -7,11 +8,28 @@ import "./Sidenav.css";
 function Sidenav(): JSX.Element {
 
     const [itemsInCart, setItemsInCart] = useState<CartItemDetailsModel[]>();
+    const [totalPrice, setTotalPrice] = useState<number[]>([]);
 
     useEffect(() => {
         const itemsInCart = cartStore.getState().itemsInCart;
+        setItemsInCart(itemsInCart);
+
+
+        const unsubscribe = cartStore.subscribe(() => {
+            const items = cartStore.getState().itemsInCart;
+
+            setItemsInCart([...items]);
+        });
+
+
+        return () => unsubscribe();
     }, []);
-    
+
+
+
+    console.log(totalPrice);
+
+
     return (
         <div className="Sidenav">
             <div className="offcanvas-header">
@@ -20,7 +38,16 @@ function Sidenav(): JSX.Element {
             </div>
 
             <div className="offcanvas-body">
-            {}
+
+
+                {itemsInCart?.map(i => <InCartCard key={i.phoneId} phoneInCart={i}></InCartCard>)}
+            </div>
+
+            <div className="offcanvas-footer">
+                <div className="totalPrice">
+                    <p>Your total price is: {totalPrice}</p>
+                    <button className="btn btn-secondary">Make an order</button>
+                </div>
             </div>
         </div>
     );

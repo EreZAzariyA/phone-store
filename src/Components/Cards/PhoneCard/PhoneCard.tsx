@@ -1,3 +1,4 @@
+import { numberWithCommas } from "index";
 import CartItemDetailsModel from "Models/Cart-Item-Details-Model";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { addItemToCartAction } from "Redux/Cart-State";
@@ -30,13 +31,7 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
             (addToCartBtn as HTMLInputElement).innerHTML = "In-Cart ✅";
             addToCartBtn.classList.add("btn-success");
 
-        } else {
-            setStock(1)
         }
-
-        // if (itemInCart) {
-
-        // }
 
         const unsubscribe = cartStore.subscribe(() => {
             const itemsInCart = cartStore.getState().itemsInCart;
@@ -58,13 +53,10 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
 
     }, []);
 
-    function numberWithCommas(x: number) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+
 
     function plus() {
-        setStock(stock + 1)
-
+        setStock(stock + 1);
     }
 
     function minus() {
@@ -74,12 +66,6 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
         setStock(stock - 1);
     }
 
-    function addToCartBtn(e: SyntheticEvent) {
-        const value = (e.target as HTMLInputElement).value;
-
-        console.log(value);
-
-    }
 
     function saveChanges() {
         const newPhone = new CartItemDetailsModel();
@@ -125,7 +111,7 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
                     </p>
 
 
-                    <button type="button" id={"addToCartBtn" + props.phone.phoneId} className="btn btn-secondary" data-bs-toggle="modal" onClick={addToCartBtn} value={"not-in-cart"} data-bs-target={"#exampleModal" + props.phone.phoneId}>
+                    <button type="button" id={"addToCartBtn" + props.phone.phoneId} className="btn btn-secondary" data-bs-toggle="modal" value={"not-in-cart"} data-bs-target={"#exampleModal" + props.phone.phoneId}>
                         Add to cart
                     </button>
 
@@ -157,7 +143,7 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
 
                                                     <div className="stockToOrder col-12">
                                                         <button className="btn" onClick={plus}>+</button>
-                                                        <p className="stock">{ stock}</p>
+                                                        <p className="stock">{stock}</p>
                                                         <button className="btn" onClick={minus}>-</button>
                                                     </div>
                                                 </div>
