@@ -1,3 +1,7 @@
 .InCartCard img {
       width: 100%;
 }
+
+.InCartCard .deleteBtn {
+      float: left;
+}

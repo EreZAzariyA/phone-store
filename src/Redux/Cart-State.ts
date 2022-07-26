@@ -29,6 +29,9 @@ export function fetchAllItemsInCartAction(phones: CartItemDetailsModel[]): CartA
 export function addItemToCartAction(phone: CartItemDetailsModel): CartAction {
       return { type: CartActionType.AddItemIntoCart, payload: phone };
 }
+export function removeItemFromCartAction(phone: CartItemDetailsModel): CartAction {
+      return { type: CartActionType.RemoveItemFromCart, payload: phone }
+}
 
 export function CartReducer(currentCartState: CartState = new CartState(), action: CartAction): CartState {
       const newCartState = { ...currentCartState };
@@ -53,6 +56,11 @@ export function CartReducer(currentCartState: CartState = new CartState(), actio
                   localStorage.setItem("itemsInCart", JSON.stringify(newCartState.itemsInCart));
                   break;
 
+            case CartActionType.RemoveItemFromCart:
+                  const newList = newCartState.itemsInCart.filter(i => i.phoneId !== action.payload.phoneId);
+                  newCartState.itemsInCart = newList;
+                  localStorage.setItem("itemsInCart", JSON.stringify(newCartState.itemsInCart));
+                  break;
 
       }
 
