@@ -9,6 +9,42 @@
             "picture": "https://empirecelular.co.il/wp-content/uploads/2021/10/LD0005886472_1.jpg"
       },
       {
+            "brandId": "83ff2517-0135-4874-af72-a242921a8ace",
+            "phoneId": "3dfe36f1-c012-43e8-b122-d5ac86c0f8e9",
+            "name": "Iphone 13",
+            "description": "Iphone 13 - 128gb",
+            "rating": 4.5,
+            "price": 5500,
+            "picture": "https://www.telecomarmenia.am/eshop/images/product/5/16342820005705.png"
+      },
+      {
+            "brandId": "83ff2517-0135-4874-af72-a242921a8ace",
+            "phoneId": "0ea137e9-5ff3-4869-a498-cadd6826a66f",
+            "name": "iPhone 12 Pro Max",
+            "description": "Iphone 12 Pro - 128gb",
+            "rating": 4.5,
+            "price": 4900,
+            "picture": "https://discountshop-online.com/604-medium_default/apple-iphone-12-pro-max-128-256-512-go.jpg"
+      },
+      {
+            "brandId": "83ff2517-0135-4874-af72-a242921a8ace",
+            "phoneId": "3a8717c5-0ad6-493c-af5b-9484045b664b",
+            "name": "iPhone 12",
+            "description": "Iphone 12 - 64gb",
+            "rating": 3.5,
+            "price": 3900,
+            "picture": "https://hotstore.hotmobile.co.il/media/catalog/product/cache/a73c0d5d6c75fbb1966fe13af695aeb7/h/6/h69114087_1000x1000_5_5.png"
+      },
+      {
+            "brandId": "83ff2517-0135-4874-af72-a242921a8ace",
+            "phoneId": "31606a8a-03e1-4f63-abec-717a46615bf0",
+            "name": "iPhone SE",
+            "description": "Iphone SE - 64gb",
+            "rating": 3,
+            "price": 3400,
+            "picture": "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-se-2020-white.png"
+      },
+      {
             "brandId": "383ff5b8-7bce-4bef-b9c1-755975d3d8f5",
             "phoneId": "3c5b7f35-c3c5-42ed-96aa-d98636704b1f",
             "name": "Samsung Galaxy S21 Ultra",
@@ -16,6 +52,15 @@
             "rating": 5,
             "price": 5200,
             "picture": "https://coolstuf.com.pg/wp-content/uploads/2021/06/ULTRA-main.jpg"
+      },
+      {
+            "brandId": "383ff5b8-7bce-4bef-b9c1-755975d3d8f5",
+            "phoneId": "69232732-f9aa-478b-b26b-5c37a9428eb5",
+            "name": "Galaxy Z Flip3",
+            "description": "Galaxy Z Flip3 - 256gb",
+            "rating": 5,
+            "price": 5100,
+            "picture": "https://www.mytrendyphone.eu/images/Samsung-Galaxy-Z-Flip3-5G-256GB-Phantom-Black-8806092563636-19082021-01-p.jpg"
       },
       {
             "brandId": "8251bd37-b057-46c1-93ac-918fc31207ba",

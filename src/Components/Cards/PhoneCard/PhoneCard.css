@@ -1,15 +1,6 @@
-.PhoneCard {
-      display: inline-block;
-      box-sizing: border-box;
-}
-
-
-
-.PhoneCard .card .card-body>* {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
+.PhoneCard .card-body {
+      margin-top: 5px;
+      padding: 10px;
 }
 
 .PhoneCard .card {
@@ -20,7 +11,8 @@
 
 .PhoneCard .card .carousel-item img {
       width: 100%;
-      height: 150px;
+      height: 170px;
+      border-radius: 10px;
 }
 
 .PhoneCard .card .modal-body img {

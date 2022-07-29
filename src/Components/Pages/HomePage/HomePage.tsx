@@ -81,13 +81,19 @@ function HomePage(): JSX.Element {
 
 
                 <div className="row">
-                    <div className="list">
 
-                        {phones === undefined && <Loading />}
+                    {phones === undefined && <Loading />}
 
+                    {brands?.map(brand =>
+                        <div key={brand.brandId} className="list">
+                            <h1 className="brandTitle">{brand.brandName}</h1>
+                            {phones?.map(phone =>
+                                phone.brandId === brand.brandId &&
+                                <PhoneCard key={phone.phoneId} phone={phone} />
+                            )}
+                        </div>
+                    )}
 
-                        {phones?.map(p => <PhoneCard key={p.phoneId} phone={p} />)}
-                    </div>
                 </div>
 
             </div>

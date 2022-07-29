@@ -36,8 +36,8 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
         } else {
             const addToCartBtn = document.getElementById("addToCartBtn" + props.phone.phoneId);
             if ((addToCartBtn as HTMLInputElement).value === "in-cart") {
-                addToCartBtn.classList.add("btn-secondary");
                 (addToCartBtn as HTMLInputElement).innerHTML = "Add to cart";
+                addToCartBtn.classList.remove("btn-success")
 
 
             }
@@ -56,8 +56,9 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
             } else {
                 const addToCartBtn = document.getElementById("addToCartBtn" + props.phone.phoneId);
                 if ((addToCartBtn as HTMLInputElement).value === "in-cart") {
-                    addToCartBtn.classList.add("btn-secondary");
                     (addToCartBtn as HTMLInputElement).innerHTML = "Add to cart";
+
+                    addToCartBtn.classList.remove("btn-success")
 
 
                 }
