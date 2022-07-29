@@ -1,5 +1,4 @@
 import InCartCard from "Components/Cards/InCartCard/InCartCard";
-import { numberWithCommas } from "index";
 import CartItemDetailsModel from "Models/Cart-Item-Details-Model";
 import { useEffect, useState } from "react";
 import { cartStore } from "Redux/Store";
@@ -8,7 +7,7 @@ import "./Sidenav.css";
 function Sidenav(): JSX.Element {
 
     const [itemsInCart, setItemsInCart] = useState<CartItemDetailsModel[]>();
-    const [totalPrice, setTotalPrice] = useState<number[]>([]);
+    const [totalPrice] = useState<number[]>([]);
 
     useEffect(() => {
         const itemsInCart = cartStore.getState().itemsInCart;
