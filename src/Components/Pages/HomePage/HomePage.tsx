@@ -87,10 +87,13 @@ function HomePage(): JSX.Element {
                     {brands?.map(brand =>
                         <div key={brand.brandId} className="list">
                             <h1 className="brandTitle">{brand.brandName}</h1>
-                            {phones?.map(phone =>
-                                phone.brandId === brand.brandId &&
-                                <PhoneCard key={phone.phoneId} phone={phone} />
-                            )}
+                            <div className="phonesList">
+
+                                {phones?.map(phone =>
+                                    phone.brandId === brand.brandId &&
+                                    <PhoneCard key={phone.phoneId} phone={phone} />
+                                )}
+                            </div>
                         </div>
                     )}
 
