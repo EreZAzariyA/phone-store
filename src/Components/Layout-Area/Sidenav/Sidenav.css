@@ -3,7 +3,9 @@
 }
 
 .Sidenav .offcanvas-body {
-	overflow: auto;
+	will-change: auto;
+	width: 100%;
+	overflow: hidden;
 
 }
 

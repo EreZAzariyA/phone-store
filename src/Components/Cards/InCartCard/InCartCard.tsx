@@ -13,7 +13,7 @@ function InCartCard(props: InCartCardProps): JSX.Element {
     function deleteItemFromCart() {
         const ans = window.confirm("Are you sure ?");
         if (ans) {
-            
+
             cartStore.dispatch(removeItemFromCartAction(props.phoneInCart))
         }
     }
@@ -23,6 +23,7 @@ function InCartCard(props: InCartCardProps): JSX.Element {
     return (
         <div className="InCartCard">
             <div className="container-fluid">
+
 
                 <button className="btn deleteBtn" onClick={deleteItemFromCart}>❌</button>
                 <div className="row">

@@ -3,5 +3,6 @@
 }
 
 .InCartCard .deleteBtn {
-      float: left;
+      position: absolute;
+      left: 0;
 }

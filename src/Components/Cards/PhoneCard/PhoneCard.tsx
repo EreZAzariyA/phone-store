@@ -33,6 +33,14 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
             (addToCartBtn as HTMLInputElement).innerHTML = "In-Cart ✅";
             addToCartBtn.classList.add("btn-success");
 
+        } else {
+            const addToCartBtn = document.getElementById("addToCartBtn" + props.phone.phoneId);
+            if ((addToCartBtn as HTMLInputElement).value === "in-cart") {
+                addToCartBtn.classList.add("btn-secondary");
+                (addToCartBtn as HTMLInputElement).innerHTML = "Add to cart";
+
+
+            }
         }
 
         const unsubscribe = cartStore.subscribe(() => {
@@ -45,8 +53,14 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
                 (addToCartBtn as HTMLInputElement).innerHTML = "In-Cart ✅";
                 addToCartBtn.classList.add("btn-success")
 
+            } else {
+                const addToCartBtn = document.getElementById("addToCartBtn" + props.phone.phoneId);
+                if ((addToCartBtn as HTMLInputElement).value === "in-cart") {
+                    addToCartBtn.classList.add("btn-secondary");
+                    (addToCartBtn as HTMLInputElement).innerHTML = "Add to cart";
 
 
+                }
             }
 
         })
@@ -116,7 +130,7 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
                     <div className="card-text">{
                         <StarRatings
                             key={props.phone.phoneId}
-                            rating={5}
+                            rating={props.phone.rating}
                             starRatedColor="yellow"
                             starDimension="20px" />
                     }
@@ -127,7 +141,7 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
                     </button>
 
                 </div>
-                
+
                 {/* Modal */}
                 <div className="modal fade" id={"exampleModal" + props.phone.phoneId} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">

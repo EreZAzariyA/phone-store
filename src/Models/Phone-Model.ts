@@ -5,6 +5,7 @@ export class PhoneModel {
       public brandId: string;
       public name: string;
       public description: string;
+      public rating: number;
       public price: number;
       public picture: string;
 
@@ -13,6 +14,7 @@ export class PhoneModel {
             this.brandId = phone.brandId;
             this.name = phone.name;
             this.description = phone.description;
+            this.rating = phone.rating;
             this.price = phone.price;
             this.picture = phone.picture;
       }

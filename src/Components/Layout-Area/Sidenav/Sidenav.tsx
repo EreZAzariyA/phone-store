@@ -7,7 +7,8 @@ import "./Sidenav.css";
 function Sidenav(): JSX.Element {
 
     const [itemsInCart, setItemsInCart] = useState<CartItemDetailsModel[]>();
-    const [totalPrice] = useState<number[]>([]);
+    const [totalPrice, setTotalPrice] = useState<number[]>([]);
+
 
     useEffect(() => {
         const itemsInCart = cartStore.getState().itemsInCart;
@@ -20,24 +21,21 @@ function Sidenav(): JSX.Element {
             setItemsInCart([...items]);
         });
 
-
         return () => unsubscribe();
     }, []);
 
 
 
 
-
     return (
         <div className="Sidenav">
+
             <div className="offcanvas-header">
                 <h5 className="offcanvas-title" id="offcanvasExampleLabel">Shopping-Cart</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
 
             <div className="offcanvas-body">
-
-
                 {itemsInCart?.map(i => <InCartCard key={i.phoneId} phoneInCart={i}></InCartCard>)}
             </div>
 
