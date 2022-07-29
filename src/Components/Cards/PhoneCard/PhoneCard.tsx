@@ -1,10 +1,12 @@
 import { numberWithCommas } from "index";
 import CartItemDetailsModel from "Models/Cart-Item-Details-Model";
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { addItemToCartAction } from "Redux/Cart-State";
 import { cartStore } from "Redux/Store";
 import { PhoneModel } from "../../../Models/Phone-Model";
 import "./PhoneCard.css";
+import StarRatings from 'react-star-ratings';
+
 
 interface PhoneCardProps {
     phone: PhoneModel;
@@ -79,10 +81,12 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
         cartStore.dispatch(addItemToCartAction(newPhone));
     }
 
+
     return (
         <div className="PhoneCard">
             <div className="card">
                 <div id={"carouselExampleControls" + props.phone.phoneId} className="carousel slide col" data-bs-ride="carousel">
+                    {/* Carousel Images */}
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <img src={props.phone?.picture} alt="pictureOne" />
@@ -94,6 +98,7 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
                             <img src={props.phone?.picture} alt="pictureThree" />
                         </div>
                     </div>
+                    {/* Carousel Buttons */}
                     <button className="carousel-control-prev" type="button" data-bs-target={"#carouselExampleControls" + props.phone.phoneId} data-bs-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Previous</span>
@@ -107,57 +112,65 @@ function PhoneCard(props: PhoneCardProps): JSX.Element {
                 <div className="card-body">
                     <h5 className="card-title">{props.phone?.name}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">{numberWithCommas(props.phone.price)} ₪</h6>
-                    <p className="card-text">{props.phone?.description}
-                    </p>
 
+                    <div className="card-text">{
+                        <StarRatings
+                            key={props.phone.phoneId}
+                            rating={5}
+                            starRatedColor="yellow"
+                            starDimension="20px" />
+                    }
+                    </div>
 
-                    <button type="button" id={"addToCartBtn" + props.phone.phoneId} className="btn btn-secondary" data-bs-toggle="modal" value={"not-in-cart"} data-bs-target={"#exampleModal" + props.phone.phoneId}>
+                    <button type="button" id={"addToCartBtn" + props.phone.phoneId} className="btn btn-secondary addToCartBtn" data-bs-toggle="modal" value={"not-in-cart"} data-bs-target={"#exampleModal" + props.phone.phoneId}>
                         Add to cart
                     </button>
 
-                    <div className="modal fade" id={"exampleModal" + props.phone.phoneId} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Set stock to order</h5>
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body">
-                                    <h3 className="phoneName">
-                                        {props.phone.name}
-                                    </h3>
-                                    <div>
+                </div>
+                
+                {/* Modal */}
+                <div className="modal fade" id={"exampleModal" + props.phone.phoneId} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Set stock to order</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                <h3 className="modelPhoneName">
+                                    {props.phone.name}
+                                </h3>
+                                <div>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <img src={props.phone.picture} alt="" />
+                                        </div>
+                                        <div className="col-6">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis amet quas eum illo et odit minima veniam, sapiente ab vitae blanditiis velit nisi repellendus accusamus sit totam sed sint molestiae!
+                                        </div>
+
                                         <div className="row">
                                             <div className="col-6">
-                                                <img src={props.phone.picture} alt="" />
+                                                {numberWithCommas(props.phone.price * stock)} ₪
                                             </div>
                                             <div className="col-6">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis amet quas eum illo et odit minima veniam, sapiente ab vitae blanditiis velit nisi repellendus accusamus sit totam sed sint molestiae!
+
+                                                <div className="stockToOrder col-12">
+                                                    <button className="btn" onClick={plus}>+</button>
+                                                    <p className="stock">{stock}</p>
+                                                    <button className="btn" onClick={minus}>-</button>
+                                                </div>
                                             </div>
 
-                                            <div className="row">
-                                                <div className="col-6">
-                                                    {numberWithCommas(props.phone.price * stock)} ₪
-                                                </div>
-                                                <div className="col-6">
-
-                                                    <div className="stockToOrder col-12">
-                                                        <button className="btn" onClick={plus}>+</button>
-                                                        <p className="stock">{stock}</p>
-                                                        <button className="btn" onClick={minus}>-</button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={saveChanges}>Save changes</button>
+                                <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={saveChanges}>Save changes</button>
 
-                                </div>
                             </div>
                         </div>
                     </div>

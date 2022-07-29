@@ -27,7 +27,6 @@ function Sidenav(): JSX.Element {
 
 
 
-    console.log(totalPrice);
 
 
     return (

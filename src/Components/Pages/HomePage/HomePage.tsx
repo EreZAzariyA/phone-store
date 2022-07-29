@@ -85,6 +85,7 @@ function HomePage(): JSX.Element {
 
                         {phones === undefined && <Loading />}
 
+
                         {phones?.map(p => <PhoneCard key={p.phoneId} phone={p} />)}
                     </div>
                 </div>
