@@ -62,3 +62,5 @@ export function authReducer(currentAuthState: AuthState = new AuthState(), actio
 
       return newAuthState;
 }
+
+
