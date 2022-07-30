@@ -9,3 +9,5 @@ export class BrandModel {
             this.brandName = brand.brandName;
       }
 }
+
+
