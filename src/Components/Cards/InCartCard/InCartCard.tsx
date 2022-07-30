@@ -45,3 +45,6 @@ function InCartCard(props: InCartCardProps): JSX.Element {
 }
 
 export default InCartCard;
+
+
+
