@@ -19,3 +19,5 @@ export class PhoneModel {
             this.picture = phone.picture;
       }
 }
+
+
