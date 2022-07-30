@@ -9,3 +9,5 @@ class CartItemDetailsModel{
 }
 
 export default CartItemDetailsModel;
+
+
